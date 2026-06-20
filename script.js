@@ -1,6 +1,4 @@
-// ===================================================================
-//  CONFIG  — paste your deployed Apps Script Web App URL here
-// ===================================================================
+
 const CONFIG = {
   APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzXcZ3spL2UPwk9-uIZ6MfFj7H-IQdj8Z1RM7QXTOv-hiE-GzTVKS4W6ne8QKk4dSb6zg/exec",
   AMOUNT_PER_MEMBER: 500,
