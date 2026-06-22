@@ -3,7 +3,7 @@
 // ===================================================================
 const CONFIG = {
   APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzXcZ3spL2UPwk9-uIZ6MfFj7H-IQdj8Z1RM7QXTOv-hiE-GzTVKS4W6ne8QKk4dSb6zg/exec",
-  AMOUNT_PER_MEMBER: 500,
+  AMOUNT_PER_MEMBER: 1, // TEMP ₹1 for test (set back to 500 for live!)
 };
 
 // ===== Shared field definition (member columns / Excel headers) =====
