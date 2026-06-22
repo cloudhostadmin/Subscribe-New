@@ -12,6 +12,30 @@ const MEMBER_HEADERS = [
   "Pincode", "City", "State", "Mobile", "Email", "Alternate Mobile",
 ];
 
+// ---------- Post-payment result banner ----------
+// After PayU, the backend sends the user back here with ?status=success|failed.
+(function showPaymentResult() {
+  const params = new URLSearchParams(window.location.search);
+  const status = params.get("status");
+  if (!status) return;
+
+  const txnid = params.get("txnid") || "";
+  const banner = document.createElement("div");
+  banner.className = "result-banner " + (status === "success" ? "ok" : "fail");
+  banner.innerHTML =
+    status === "success"
+      ? "<h2>✓ Payment Successful</h2><p>Your subscription has been saved. Thank you!</p>" +
+        (txnid ? "<p class='txn'>Transaction ID: <b>" + txnid + "</b></p>" : "")
+      : "<h2>Payment Failed</h2><p>No charge was completed. You can try again below.</p>";
+
+  const card = document.querySelector(".card");
+  card.insertBefore(banner, card.firstChild);
+  banner.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  // Clean the URL so a refresh doesn't keep showing the banner.
+  window.history.replaceState({}, document.title, window.location.pathname);
+})();
+
 // ---------- Warning helpers ----------
 const warningEl = document.getElementById("formWarning");
 

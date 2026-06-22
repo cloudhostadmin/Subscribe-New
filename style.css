@@ -209,6 +209,19 @@ input[type="file"] {
   color: #888;
 }
 
+/* Post-payment result banner */
+.result-banner {
+  border-radius: 10px;
+  padding: 20px 18px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.result-banner h2 { font-size: 20px; margin-bottom: 6px; }
+.result-banner p { font-size: 14px; margin-top: 4px; }
+.result-banner .txn { color: #555; font-size: 13px; }
+.result-banner.ok { background: #eaf7ef; border: 1px solid #b6e0c6; color: #2e8b57; }
+.result-banner.fail { background: #fdecea; border: 1px solid #f3c0b8; color: #e0502b; }
+
 /* Warning message (shown only on validation failure) */
 .warning {
   display: none;
