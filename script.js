@@ -441,6 +441,33 @@ document.getElementById("giftForm").addEventListener("submit", async (e) => {
       return;
     }
 
+    // (1) Row count must match the number of members entered above
+    if (rows.length !== n) {
+      showWarning(
+        `You entered ${n} member${n > 1 ? "s" : ""}, but the sheet has ${rows.length} ` +
+        `filled row${rows.length > 1 ? "s" : ""}. Please make the sheet match — exactly ${n} row${n > 1 ? "s" : ""}.`
+      );
+      return;
+    }
+
+    // (2) Per-row data validation: name not blank, pincode 6 digits, mobile 10 digits
+    for (let i = 0; i < rows.length; i++) {
+      const r = rows[i];
+      const rowNo = i + 1; // sheet data row (excluding header)
+      if (!r["First Name"]) {
+        showWarning(`Row ${rowNo}: "First Name" cannot be blank.`);
+        return;
+      }
+      if (!/^\d{6}$/.test(r["Pincode"])) {
+        showWarning(`Row ${rowNo}: "Pincode" must be exactly 6 digits (found "${r["Pincode"] || "blank"}").`);
+        return;
+      }
+      if (!/^\d{10}$/.test(r["Mobile"])) {
+        showWarning(`Row ${rowNo}: "Mobile" must be exactly 10 digits (found "${r["Mobile"] || "blank"}").`);
+        return;
+      }
+    }
+
     proceedToPayment({
       mode: "gift-bulk",
       count: rows.length,
