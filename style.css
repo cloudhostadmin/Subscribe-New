@@ -65,6 +65,32 @@ body {
   margin: 28px 0;
 }
 
+/* Language toggle */
+.lang-toggle {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.lang-btn {
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  border: 2px solid #e0a100;
+  background: #fff;
+  color: #c47e00;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lang-btn.active {
+  background: linear-gradient(90deg, #e0a100, #c47e00);
+  color: #fff;
+}
+
 /* Mode toggle */
 .mode-toggle {
   display: flex;
