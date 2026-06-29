@@ -14,8 +14,8 @@
     <header class="form-header">
       <div class="header-text">
         <h1 class="hindi-title">कल्याण शताब्दी वर्ष</h1>
-        <h2 class="eng-title">KALYAN Centenary Year 2026</h2>
-        <p>New Renewal Form</p>
+        <h2 class="eng-title" data-i18n="headerTitle">KALYAN Centenary Year 2026</h2>
+        <p data-i18n="headerSub">New Renewal Form</p>
       </div>
       <div class="header-logo">
         <img src="https://raw.githubusercontent.com/cloudhostadmin/KALYAN_CENTURY_2026/main/kal2026.jpeg" alt="Kalyan Book" />
@@ -24,10 +24,16 @@
 
     <hr class="divider" />
 
+    <!-- Language toggle -->
+    <div class="lang-toggle">
+      <button type="button" class="lang-btn" data-lang="en">English</button>
+      <button type="button" class="lang-btn active" data-lang="hi">हिन्दी</button>
+    </div>
+
     <!-- Mode toggle -->
     <div class="mode-toggle">
-      <button type="button" class="mode-btn active" data-mode="renewal">Self</button>
-      <button type="button" class="mode-btn" data-mode="gift">🎁 Gift to Others</button>
+      <button type="button" class="mode-btn active" data-mode="renewal" data-i18n="modeSelf">Self</button>
+      <button type="button" class="mode-btn" data-mode="gift" data-i18n="modeGift">Gift to Others</button>
     </div>
 
     <p class="warning" id="formWarning"></p>
@@ -35,29 +41,29 @@
     <!-- ================= RENEWAL FORM ================= -->
     <form id="renewalForm" class="mode-section active" novalidate>
       <div class="field">
-        <label for="firstName">First Name <span class="req">*</span></label>
+        <label for="firstName" data-i18n="firstName">First Name <span class="req">*</span></label>
         <input type="text" id="firstName" required />
       </div>
 
       <div class="field">
-        <label for="lastName">Last Name <span class="req">*</span></label>     
+        <label for="lastName" data-i18n="lastName">Last Name <span class="req">*</span></label>
         <input type="text" id="lastName" required />
       </div>
 
       <div class="field">
-        <label for="address1">Address 1 <span class="req">*</span></label>
+        <label for="address1" data-i18n="address1">Address 1 <span class="req">*</span></label>
         <input type="text" id="address1" maxlength="40" required />
         <span class="counter" data-for="address1">0/40</span>
       </div>
 
       <div class="field">
-        <label for="address2">Address 2 <span class="req">*</span></label>
+        <label for="address2" data-i18n="address2">Address 2 <span class="req">*</span></label>
         <input type="text" id="address2" maxlength="40" required />
         <span class="counter" data-for="address2">0/40</span>
       </div>
 
       <div class="field">
-        <label for="address3">Address 3</label>
+        <label for="address3" data-i18n="address3">Address 3</label>
         <input type="text" id="address3" maxlength="40" />
         <span class="counter" data-for="address3">0/40</span>
       </div>
@@ -65,48 +71,48 @@
       <!-- Pincode / City / State row -->
       <div class="field-row pincode-scope">
         <div class="field">
-          <label>Pincode <span class="req">*</span></label>
-          <input type="text" class="pincode-input" inputmode="numeric" maxlength="6" placeholder="6-digit" required />
+          <label data-i18n="pincode">Pincode <span class="req">*</span></label>
+          <input type="text" class="pincode-input" inputmode="numeric" maxlength="6" data-i18n-placeholder="pincodePh" placeholder="6-digit" required />
           <span class="status pincode-status"></span>
         </div>
         <div class="field">
-          <label>City <span class="req">*</span></label>
-          <input type="text" class="city-input" placeholder="Auto-filled" required />
+          <label data-i18n="city">City <span class="req">*</span></label>
+          <input type="text" class="city-input" data-i18n-placeholder="cityPh" placeholder="Auto-filled" required />
         </div>
         <div class="field">
-          <label>State <span class="req">*</span></label>
-          <input type="text" class="state-input" placeholder="Auto-filled" required />
+          <label data-i18n="state">State <span class="req">*</span></label>
+          <input type="text" class="state-input" data-i18n-placeholder="statePh" placeholder="Auto-filled" required />
         </div>
       </div>
 
       <div class="field">
-        <label for="mobile">Mobile Number <span class="req">*</span></label>
-        <input type="text" id="mobile" class="mobile-input" inputmode="numeric" maxlength="10" placeholder="Mobile number" required />
+        <label for="mobile" data-i18n="mobile">Mobile Number <span class="req">*</span></label>
+        <input type="text" id="mobile" class="mobile-input" inputmode="numeric" maxlength="10" data-i18n-placeholder="mobilePh" placeholder="Mobile number" required />
       </div>
 
       <div class="field">
-        <label for="email">Email ID</label>
-        <input type="email" id="email" placeholder="Please provide for Easier communications" />
+        <label for="email" data-i18n="email">Email ID</label>
+        <input type="email" id="email" data-i18n-placeholder="emailPh" placeholder="Please provide for Easier communications" />
       </div>
 
       <div class="field">
-        <label for="altMobile">Alternate Mobile / WhatsApp Number</label>
-        <input type="text" id="altMobile" class="mobile-input" inputmode="numeric" maxlength="10" placeholder="Enter alternate mobile number" />
+        <label for="altMobile" data-i18n="altMobile">Alternate Mobile / WhatsApp Number</label>
+        <input type="text" id="altMobile" class="mobile-input" inputmode="numeric" maxlength="10" data-i18n-placeholder="altMobilePh" placeholder="Enter alternate mobile number" />
       </div>
 
-      <div class="amount-box">
+      <div class="amount-box" data-i18n="renewalAmount">
         Total Amount: <strong>₹500</strong> <span>(1 subscription × ₹500)</span>
       </div>
 
-      <button type="submit" class="submit-btn">Submit &amp; Proceed to Payment</button>
+      <button type="submit" class="submit-btn" data-i18n="submitBtn">Submit &amp; Proceed to Payment</button>
     </form>
 
     <!-- ================= GIFT FORM ================= -->
     <form id="giftForm" class="mode-section" novalidate>
       <div class="field">
-        <label for="memberCount">Enter Number of Kalyan To Gift<span class="req">*</span></label>
-        <input type="number" id="memberCount" min="1" max="500" placeholder="Enter number of members" />
-        <span class="hint">Up to 5 members: fill details below. More than 5: upload an Excel sheet.</span>
+        <label for="memberCount" data-i18n="memberCountLabel">Enter Number of Kalyan To Gift<span class="req">*</span></label>
+        <input type="number" id="memberCount" min="1" max="500" data-i18n-placeholder="memberCountPh" placeholder="Enter number of members" />
+        <span class="hint" data-i18n="memberCountHint">Up to 5 members: fill details below. More than 5: upload an Excel sheet.</span>
       </div>
 
       <!-- Per-member blocks (for <= 5) injected here by JS -->
@@ -114,42 +120,42 @@
 
       <!-- Gifted By (shown for <= 5) -->
       <div id="giftedByBlock" class="gifted-by" hidden>
-        <h3 class="block-title">Gifted By</h3>
+        <h3 class="block-title" data-i18n="giftedByTitle">Gifted By</h3>
         <div class="field">
-          <label for="giftedByName">Gifted By (Name) <span class="req">*</span></label>
-          <input type="text" id="giftedByName" placeholder="Your name" />
+          <label for="giftedByName" data-i18n="giftedByName">Gifted By (Name) <span class="req">*</span></label>
+          <input type="text" id="giftedByName" data-i18n-placeholder="giftedByNamePh" placeholder="Your name" />
         </div>
         <div class="field">
-          <label for="giftedByMobile">Gifted By (Mobile) <span class="req">*</span></label>
-          <input type="text" id="giftedByMobile" class="mobile-input" inputmode="numeric" maxlength="10" placeholder="Your mobile number" />
+          <label for="giftedByMobile" data-i18n="giftedByMobile">Gifted By (Mobile) <span class="req">*</span></label>
+          <input type="text" id="giftedByMobile" class="mobile-input" inputmode="numeric" maxlength="10" data-i18n-placeholder="giftedByMobilePh" placeholder="Your mobile number" />
         </div>
         <div class="field">
-          <label for="giftedByEmail">Gifted By (Email) <span class="req">*</span></label>
-          <input type="email" id="giftedByEmail" placeholder="For the payment receipt" />
+          <label for="giftedByEmail" data-i18n="giftedByEmail">Gifted By (Email) <span class="req">*</span></label>
+          <input type="email" id="giftedByEmail" data-i18n-placeholder="giftedByEmailPh" placeholder="For the payment receipt" />
         </div>
       </div>
 
       <!-- Bulk upload (shown for > 5) -->
       <div id="bulkBlock" class="bulk" hidden>
-        <h3 class="block-title">Bulk Gift — Upload Excel Sheet</h3>
-        <p class="bulk-text">
+        <h3 class="block-title" data-i18n="bulkTitle">Bulk Gift — Upload Excel Sheet</h3>
+        <p class="bulk-text" id="bulkText">
           You're gifting <strong id="bulkCount">0</strong> members. Please upload an Excel/CSV sheet
           with the <strong>same column headers</strong> listed below (one row per member):
         </p>
         <div class="headers-list" id="headersList"></div>
-        <button type="button" class="template-btn" id="downloadTemplate">⬇ Download Template (CSV)</button>
+        <button type="button" class="template-btn" id="downloadTemplate" data-i18n="downloadTemplate">Download Template (CSV)</button>
         <div class="field">
-          <label for="bulkFile">Upload your filled sheet <span class="req">*</span></label>
+          <label for="bulkFile" data-i18n="bulkFileLabel">Upload your filled sheet <span class="req">*</span></label>
           <input type="file" id="bulkFile" accept=".xlsx,.xls,.csv" />
           <span class="status" id="bulkFileStatus"></span>
         </div>
       </div>
 
       <div class="amount-box" id="giftAmountBox" hidden>
-        Total Amount: <strong id="giftAmount">₹0</strong> <span id="giftAmountSub"></span>
+        <span data-i18n="totalAmountLabel">Total Amount:</span> <strong id="giftAmount">₹0</strong> <span id="giftAmountSub"></span>
       </div>
 
-      <button type="submit" class="submit-btn" id="giftSubmit" hidden>Submit &amp; Proceed to Payment</button>
+      <button type="submit" class="submit-btn" id="giftSubmit" hidden data-i18n="submitBtn">Submit &amp; Proceed to Payment</button>
     </form>
   </main>
 
