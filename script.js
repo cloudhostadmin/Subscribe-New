@@ -6,6 +6,123 @@ const CONFIG = {
   AMOUNT_PER_MEMBER: 500,
 };
 
+// ===================================================================
+//  i18n — English / Hindi translations
+// ===================================================================
+const LANG = {
+  en: {
+    headerTitle: "KALYAN Centenary Year 2026",
+    headerSub: "New Renewal Form",
+    modeSelf: "Self",
+    modeGift: "Gift to Others",
+    firstName: 'First Name <span class="req">*</span>',
+    lastName: 'Last Name <span class="req">*</span>',
+    address1: 'Address 1 <span class="req">*</span>',
+    address2: 'Address 2 <span class="req">*</span>',
+    address3: "Address 3",
+    pincode: 'Pincode <span class="req">*</span>',
+    city: 'City <span class="req">*</span>',
+    state: 'State <span class="req">*</span>',
+    mobile: 'Mobile Number <span class="req">*</span>',
+    email: "Email ID",
+    altMobile: "Alternate Mobile / WhatsApp Number",
+    renewalAmount: 'Total Amount: <strong>₹500</strong> <span>(1 subscription × ₹500)</span>',
+    submitBtn: "Submit & Proceed to Payment",
+    memberCountLabel: 'Enter Number of Kalyan To Gift<span class="req">*</span>',
+    memberCountHint: "Up to 5 members: fill details below. More than 5: upload an Excel sheet.",
+    giftedByTitle: "Gifted By",
+    giftedByName: 'Gifted By (Name) <span class="req">*</span>',
+    giftedByMobile: 'Gifted By (Mobile) <span class="req">*</span>',
+    giftedByEmail: 'Gifted By (Email) <span class="req">*</span>',
+    bulkTitle: "Bulk Gift — Upload Excel Sheet",
+    downloadTemplate: "Download Template (CSV)",
+    bulkFileLabel: 'Upload your filled sheet <span class="req">*</span>',
+    totalAmountLabel: "Total Amount:",
+    giftToBlock: "Gift To",
+    pincodePh: "6-digit",
+    cityPh: "Auto-filled",
+    statePh: "Auto-filled",
+    mobilePh: "Mobile number",
+    emailPh: "Please provide for Easier communications",
+    altMobilePh: "Enter alternate mobile number",
+    memberCountPh: "Enter number of members",
+    giftedByNamePh: "Your name",
+    giftedByMobilePh: "Your mobile number",
+    giftedByEmailPh: "For the payment receipt",
+    optionalPh: "Optional",
+  },
+  hi: {
+    headerTitle: "कल्याण शताब्दी वर्ष 2026",
+    headerSub: "नवीनीकरण फॉर्म",
+    modeSelf: "स्वयं",
+    modeGift: "दूसरों को उपहार",
+    firstName: 'पहला नाम <span class="req">*</span>',
+    lastName: 'अंतिम नाम <span class="req">*</span>',
+    address1: 'पता 1 <span class="req">*</span>',
+    address2: 'पता 2 <span class="req">*</span>',
+    address3: "पता 3",
+    pincode: 'पिनकोड <span class="req">*</span>',
+    city: 'शहर <span class="req">*</span>',
+    state: 'राज्य <span class="req">*</span>',
+    mobile: 'मोबाइल नंबर <span class="req">*</span>',
+    email: "ईमेल आईडी",
+    altMobile: "वैकल्पिक मोबाइल / व्हाट्सएप नंबर",
+    renewalAmount: 'कुल राशि: <strong>₹500</strong> <span>(1 सदस्यता × ₹500)</span>',
+    submitBtn: "सबमिट करें और भुगतान पर जाएं",
+    memberCountLabel: 'कल्याण उपहार देने की संख्या दर्ज करें<span class="req">*</span>',
+    memberCountHint: "5 तक सदस्य: नीचे विवरण भरें। 5 से अधिक: एक्सेल शीट अपलोड करें।",
+    giftedByTitle: "उपहारकर्ता",
+    giftedByName: 'उपहारकर्ता (नाम) <span class="req">*</span>',
+    giftedByMobile: 'उपहारकर्ता (मोबाइल) <span class="req">*</span>',
+    giftedByEmail: 'उपहारकर्ता (ईमेल) <span class="req">*</span>',
+    bulkTitle: "बल्क उपहार — एक्सेल शीट अपलोड करें",
+    downloadTemplate: "टेम्पलेट डाउनलोड करें (CSV)",
+    bulkFileLabel: 'भरी हुई शीट अपलोड करें <span class="req">*</span>',
+    totalAmountLabel: "कुल राशि:",
+    giftToBlock: "उपहार प्राप्तकर्ता",
+    pincodePh: "6 अंक",
+    cityPh: "स्वतः भरा जाएगा",
+    statePh: "स्वतः भरा जाएगा",
+    mobilePh: "मोबाइल नंबर",
+    emailPh: "आसान संवाद के लिए कृपया प्रदान करें",
+    altMobilePh: "वैकल्पिक मोबाइल नंबर दर्ज करें",
+    memberCountPh: "सदस्यों की संख्या दर्ज करें",
+    giftedByNamePh: "आपका नाम",
+    giftedByMobilePh: "आपका मोबाइल नंबर",
+    giftedByEmailPh: "भुगतान रसीद के लिए",
+    optionalPh: "वैकल्पिक",
+  },
+};
+
+let currentLang = "hi";
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  const t = LANG[lang];
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.dataset.i18n;
+    if (t[key] != null) el.innerHTML = t[key];
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.dataset.i18nPlaceholder;
+    if (t[key] != null) el.placeholder = t[key];
+  });
+  // Re-render gift member blocks if any exist
+  const n = parseInt(memberCountInput?.value, 10);
+  if (n && n >= 1 && n <= 5) renderMembers(n);
+  // Update gift amount text if visible
+  if (n && n >= 1) updateGiftAmount(n);
+}
+
+// Language toggle buttons
+document.querySelectorAll(".lang-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".lang-btn").forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    applyLanguage(btn.dataset.lang);
+  });
+});
+
 // ===== Shared field definition (member columns / Excel headers) =====
 const MEMBER_HEADERS = [
   "First Name", "Last Name", "Address 1", "Address 2", "Address 3",
@@ -146,55 +263,56 @@ const bulkCount = document.getElementById("bulkCount");
 
 // Build one member block's HTML
 function memberBlockHTML(i) {
+  const t = LANG[currentLang];
   return `
     <div class="member-block">
-      <h3 class="block-title">Gift To</h3>
+      <h3 class="block-title">${t.giftToBlock}</h3>
       <div class="field">
-        <label>First Name <span class="req">*</span></label>
+        <label>${t.firstName}</label>
         <input type="text" class="m-firstName" required />
       </div>
       <div class="field">
-        <label>Last Name <span class="req">*</span></label>
+        <label>${t.lastName}</label>
         <input type="text" class="m-lastName" required />
       </div>
       <div class="field">
-        <label>Address 1 <span class="req">*</span></label>
+        <label>${t.address1}</label>
         <input type="text" class="m-address1" maxlength="40" required />
       </div>
       <div class="field">
-        <label>Address 2 <span class="req">*</span></label>
+        <label>${t.address2}</label>
         <input type="text" class="m-address2" maxlength="40" required />
       </div>
       <div class="field">
-        <label>Address 3</label>
+        <label>${t.address3}</label>
         <input type="text" class="m-address3" maxlength="40" />
       </div>
       <div class="field-row pincode-scope">
         <div class="field">
-          <label>Pincode <span class="req">*</span></label>
-          <input type="text" class="pincode-input" inputmode="numeric" maxlength="6" placeholder="6-digit" required />
+          <label>${t.pincode}</label>
+          <input type="text" class="pincode-input" inputmode="numeric" maxlength="6" placeholder="${t.pincodePh}" required />
           <span class="status pincode-status"></span>
         </div>
         <div class="field">
-          <label>City <span class="req">*</span></label>
-          <input type="text" class="city-input" placeholder="Auto-filled" required />
+          <label>${t.city}</label>
+          <input type="text" class="city-input" placeholder="${t.cityPh}" required />
         </div>
         <div class="field">
-          <label>State <span class="req">*</span></label>
-          <input type="text" class="state-input" placeholder="Auto-filled" required />
+          <label>${t.state}</label>
+          <input type="text" class="state-input" placeholder="${t.statePh}" required />
         </div>
       </div>
       <div class="field">
-        <label>Mobile Number <span class="req">*</span></label>
-        <input type="text" class="m-mobile mobile-input" inputmode="numeric" maxlength="10" placeholder="Mobile number" required />
+        <label>${t.mobile}</label>
+        <input type="text" class="m-mobile mobile-input" inputmode="numeric" maxlength="10" placeholder="${t.mobilePh}" required />
       </div>
       <div class="field">
-        <label>Email ID</label>
-        <input type="email" class="m-email" placeholder="Optional" />
+        <label>${t.email}</label>
+        <input type="email" class="m-email" placeholder="${t.optionalPh}" />
       </div>
       <div class="field">
-        <label>Alternate Mobile / WhatsApp Number</label>
-        <input type="text" class="m-altMobile mobile-input" inputmode="numeric" maxlength="10" placeholder="Optional" />
+        <label>${t.altMobile}</label>
+        <input type="text" class="m-altMobile mobile-input" inputmode="numeric" maxlength="10" placeholder="${t.optionalPh}" />
       </div>
     </div>`;
 }
@@ -218,7 +336,11 @@ const giftAmountSub = document.getElementById("giftAmountSub");
 function updateGiftAmount(n) {
   const total = n * CONFIG.AMOUNT_PER_MEMBER;
   giftAmount.textContent = "₹" + total.toLocaleString("en-IN");
-  giftAmountSub.textContent = `(${n} member${n > 1 ? "s" : ""} × ₹${CONFIG.AMOUNT_PER_MEMBER})`;
+  if (currentLang === "hi") {
+    giftAmountSub.textContent = `(${n} सदस्य × ₹${CONFIG.AMOUNT_PER_MEMBER})`;
+  } else {
+    giftAmountSub.textContent = `(${n} member${n > 1 ? "s" : ""} × ₹${CONFIG.AMOUNT_PER_MEMBER})`;
+  }
   giftAmountBox.hidden = false;
 }
 
@@ -502,3 +624,6 @@ function parseSheet(file) {
     reader.readAsArrayBuffer(file);
   });
 }
+
+// Apply Hindi on page load
+applyLanguage("hi");
